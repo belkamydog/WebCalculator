@@ -1,0 +1,27 @@
+#main {
+    display: flex;
+    justify-content: center;
+
+}
+
+a {
+   text-decoration: none;
+   margin-left: 10px;
+    color: black;
+}
+.point {
+    width: 200px;
+    background-color: #80808064;
+    text-align: center;
+    height: 50px;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    border: 2px solid black;
+}
+
+.point:hover {
+    background-color: white;
+}

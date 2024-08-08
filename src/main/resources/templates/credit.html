@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+        <link th:href="@{/credit.css}" rel="stylesheet"/>
+        <link th:href="@{menu-bar.css}" rel="stylesheet"/>
+    <title>Credit calc</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script src="/credit.js"></script>
+    <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+    <script src="/settings.js"></script>
+</head>
+<body onload="getSettings()">
+    <div id="bar" th:insert="menu-bar :: bar"></div>
+    <h3>Calculator/Credit calculator</h3>
+    <div id="creditCalculator">
+        <div id="content">
+            <div id="inputData">
+                <div class="row">
+                    <div class="description"><label for=loanAmount>Loan amount:</label></div>
+                    <input class="inputFields" id=loanAmount type="number" value="10000" max="10000000" min="1">
+                </div>
+                <div class="row">
+                    <div class="description"><label for=loanTerm>Loan term:</label></div>
+                    <input class="inputFields" id=loanTerm type="number" value="1" max="1000" min="1">
+                    <select id="termSelect" class="inputFields">
+                        <option>year</option>
+                        <option>month</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="description"><label for=interestRate>Interest rate:</label></div>
+                    <input class="inputFields" id=interestRate type="number" value="12" max="100" min="0">
+                </div>
+                <div class="row">
+                    <div class="description"><label for=paymentType>Interest rate:</label></div>
+                    <select id="paymentType" class="inputFields">
+                        <option>annuity</option>
+                        <option>differently</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="description"><label for=loanDate>Interest rate:</label></div>
+                    <input class="inputFields" id=loanDate type="date">
+                </div>
+            </div>
+            <div id="separator"></div>
+            <div id="detailed">
+                <div id="resultCalculate">
+                    <div class=row>
+                        <div class="description"><label for="monthPayment">Month payment:</label></div>
+                        <div id="monthPayment" class="results">0</div>
+                    </div>
+                    <div class=row>
+                        <div class="description"><label for="overpayment">Overpayment:</label></div>
+                        <div id="overpayment" class="results">0</div>
+                    </div>
+                    <div class=row>
+                        <div class="description"><label for="fullCost">Full cost:</label></div>
+                        <div id="fullCost" class="results">0</div>
+                </div>
+                <div id="diagramDiv">
+                    <canvas id="pie-chart"></canvas>
+                </div>
+                </div></div>
+        </div>
+        <button id="submit" type="button" onclick="sendLoanDataToBack()">Calculate</button>
+        <div id="barChart">
+            <canvas id="diagramBar"></canvas>
+        </div>
+        <div id="table"></div>
+    </div>
+    <script src="/credit.js" type="module"></script>
+    <script>document.getElementById("loanDate").valueAsDate = new Date();</script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+body{
+    display:grid;
+    justify-content:center;
+}
+h3{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    color: #5a5a60;
+}
+#depositCalculator{
+    display: grid;
+    margin-top: 5px;
+    height: auto;
+    border: 2px solid #b3b1b1;
+    border-radius: 10px;
+    background: rgba(219, 238, 255, 0.53);
+}
+#content{
+    display: flex;
+    justify-content: center;
+
+}
+/* Ввод данных*/
+#inputData{
+    display:block;
+    justify-content:flex-start;
+    margin-left: 5px;
+    width:50%;
+    padding: 10px;
+}
+.row{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    margin-top: 20px;
+}
+.description{
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 23px;
+    width: 180px;
+    color: #5a5a60;
+}
+.inputFields{
+    margin-left: 30px;
+    height: 50px;
+    font-size: 20px;
+    color: #3b3b3e;
+    border: 1px solid #b3b1b1;
+    padding-left: 10px;
+}
+
+.percent{
+    margin-left: 5px;
+    font-size: 15px;
+}
+/*label{*/
+/*    height: 25px;*/
+/*    line-height: 25px;*/
+/*}*/
+/*----------*/
+
+
+.results{
+    font-weight: bold;
+    font-size: 25px;
+}
+#tdResultInterests{
+    font-weight: bold;
+}
+#balanceResult{
+    font-weight: bold;
+}
+
+
+select {
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Chrome */
+    -webkit-appearance: none;
+}
+
+/* For IE10 */
+select::-ms-expand {
+    display: none;
+}
+
+.lineD{
+    margin-top: 13px;
+    font-size: 23px;
+    color: #5a5a60;
+}
+input{
+    width: 210px;
+    height:30px;
+}
+select{
+    border-radius: 1px;
+}
+/*select{*/
+/*    height:36px;*/
+/*    font-size: 20px;*/
+/*}*/
+#termSelect{
+    margin-left:5px;
+    margin-top:1px;
+}
+#paymentType{
+    width: 218px;
+    text-align:center;
+}
+.horizontalSpacer{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    border: 2px solid #b3b1b1;
+}
+#submit{
+    margin-top: 10px;
+    color: #5a5a60;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    border-radius: 2px;
+    width: 99%;
+    height:40px;
+    border: 1px solid #b3b1b1;
+    font-size:20px;
+}
+#submit:hover{
+    color: black;
+    background: #c2d2e3;
+}
+#separator{
+    border:1px solid lightgray;
+    margin-top:20px;
+    height: 95%;
+}
+#resultCalculate{
+    width: 100%;
+    margin-left: 40px;
+    display:block;
+}
+#dataResult{
+    margin-left:20px;
+}
+#detailed{
+    width: 50%;
+    margin-top: 10px;
+}
+#diagramDiv{
+    display:flex;
+    justify-content:center;
+}
+#pie-chart{
+    max-width:400px;
+    max-height: 250px;
+}
+/*Пополнения и снятия*/
+#depositsAndWithdrawals{
+    justify-content:flex-start;
+}
+.descAdd{
+    /*display: flex;*/
+    width: 250px;
+    vertical-align: middle;
+    font-size: 23px;
+    color: #5a5a60;
+}
+.addDiv{
+    display: flex;
+    font-size:25px;
+    margin-left: 10px;
+    min-height: 50px ;
+    margin-top: 25px;
+}
+.addSelect{
+    margin-top:2px;
+    margin-left: 20px;
+    font-size:17px;
+    height:38px;
+}
+
+.parentAdd{
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content:flex-end;
+}
+
+.addBtnContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+.addBtn{
+    max-height: 30px;
+    margin-left: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: green;
+    background:none;
+    border:none;
+}
+.addBtn:hover{
+    color: #04e60d;
+    font-size: larger;
+}
+#deleteBtn{
+    color: red;
+    font-size: 80%;
+}
+
+
+/*График выплаты процентов (таблица)*/
+.statTd{
+    font-size: 20px;
+    background: #e8edff;
+    border-bottom: 1px solid white;
+    color: #3b3b3e;
+    border-top: 1px solid transparent;
+    padding: 8px;
+}
+#statHead{
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+    background: #c2d2e3;
+    border-top: 4px solid #aabcfe;
+    border-bottom: 1px solid white;
+    color: #5a5a60;
+    padding: 8px;
+}
+/*.statTr:hover{*/
+/*    background: #ccddff;*/
+/*}*/
+
+.statTd:hover{
+    background: #ccddff;
+}
+#statTable{
+    margin-top: 20px;
+    width: 100%;
+}

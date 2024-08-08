@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{main-page.css}" rel="stylesheet"/>
+  <script src="/settings.js"></script>
+  <title>Main menu</title>
+</head>
+<body onload="getSettings()">
+  <div id="main">
+    <div id="logo">
+      <h1>SMART-CALCULATOR</h1>
+    </div>
+    <a href="engineer"><div class="menu-point" id="engineer"><h2>ENGINEER CALCULATOR</h2></div></a>
+    <a href="credit"><div class="menu-point" id="credit"><h2>CREDIT CALCULATOR</h2></div></a>
+    <a href="debit"><div class="menu-point" id="deposit"><h2>DEPOSIT CALCULATOR</h2></div></a>
+    <a href="settings"><div class="menu-point" id="settings"><h2>SETTINGS</h2></div></a>
+  </div>
+</body>
+</html>

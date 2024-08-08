@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/deposit.css}" rel="stylesheet"/>
+    <link th:href="@{menu-bar.css}" rel="stylesheet"/>
+    <title>Debit calc</title>
+    <script src="/deposit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script src="/credit.js"></script>
+    <script src="/settings.js"></script>
+</head>
+<body onload="getSettings()">
+<div id="bar" th:insert="menu-bar :: bar"></div>
+<h3>Calculator/Deposit calculator</h3>
+<div id="depositCalculator">
+    <div id="content">
+        <div id="inputData">
+            <div class="row">
+                <div class="description"><label for=startAmount>Deposit amount:</label></div>
+                <input class="inputFields" id=startAmount type="number" value="10000" max="10000000" min="1">
+            </div>
+            <div class="row">
+                <div class="description"><label for=placementPeriod>Placement period:</label></div>
+                <input class="inputFields" id=placementPeriod type="number" value="1" max="1000" min="1">
+                <label for="termSelect"></label><select class="inputFields" id="termSelect">
+                    <option>year</option>
+                    <option>month</option>
+                    <option>day</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="description"><label for=interestRate>Interest rate:</label></div>
+                <input class="inputFields" id=interestRate type="number" value="12" max="100" min="0">
+                <sub class="percent">%</sub>
+            </div>
+            <div class="row">
+                <div class="description"><label for=taxRate>Tax rate:</label></div>
+                <input class="inputFields" id=taxRate type="number" value="0" max="100" min="0">
+                <sub class="percent">%</sub>
+            </div>
+            <div class="row">
+                <div><label for="capitalisationSelect" class="description">Capitalization:</label></div>
+                <select class="inputFields" id="capitalisationSelect">
+                    <option value="false">no</option>
+                    <option value="true">yes</option>
+                </select>
+            </div>
+            <div class="row">
+                <div><label for="startOfTerm" class="description">Start of term:</label></div>
+                <input class="inputFields" id="startOfTerm" type="date">
+            </div>
+            <div class="row">
+                <div><label for="paymentType" class="description">Interest payments:</label></div>
+                <select  class="inputFields" id="paymentType">
+                    <option value="year">every year</option>
+                    <option value="month">every month</option>
+                    <option value="day">every day</option>
+                </select>
+            </div>
+        </div>
+        <div id="separator"></div>
+        <div id="detailed">
+            <div id="resultCalculate">
+                <div class=row>
+                    <div class="description"><label for="interestCharges">Interest charges:</label></div>
+                    <div id="interestCharges" class="results">0</div>
+                </div>
+                <div class=row>
+                    <div class="description"><label for="depositAmount">Deposit amount:</label></div>
+                    <div id="depositAmount" class="results">0</div>
+                </div>
+                <div class=row>
+                    <div class="description"><label for="tax">Tax:</label></div>
+                    <div id="tax" class="results">0</div>
+                </div>
+                <div class=row>
+                    <div class="description"><label for="capitalGains">Capital gains:</label></div>
+                    <div id="capitalGains" class="results">0</div>
+                </div>
+            </div>
+            <div id="diagramDiv">
+                <canvas id="pie-chart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="horizontalSpacer"></div>
+    <div id="depositsAndWithdrawals">
+        <div class="addDiv" id="addReplenishmentDiv">
+            <div class="descAdd">Add replenishment:</div>
+                <div class="parentAdd">
+                    <div class="addBtnContainer">
+                        <button id="addPush" class="addBtn" type="button" onclick="addFieldForAdd('addReplenishmentTable')">➕</button>
+                    </div>
+                    <table id="addReplenishmentTable"></table>
+                </div>
+        </div>
+        <div class="horizontalSpacer"></div>
+        <div class="addDiv" id="addWithdrawalDiv">
+            <div class="descAdd">Add withdrawal:</div>
+            <div class="parentAdd">
+                <div class="addBtnContainer">
+                    <button id="addPop" class="addBtn" type="button" onclick="addFieldForAdd('addWithdrawalTable')">➕</button>
+                </div>
+            </div>
+            <table id="addWithdrawalTable"></table>
+        </div>
+        <button id="submit" type="button" onclick="calculate()">Calculate</button>
+    </div>
+    <div id="table"></div>
+</div>
+<div id="barChart">
+    <canvas id="diagramBar"></canvas>
+</div>
+<script src="/deposit.js" type="module"></script>
+<script>document.getElementById("startOfTerm").valueAsDate = new Date();</script>
+</body>
+</html>

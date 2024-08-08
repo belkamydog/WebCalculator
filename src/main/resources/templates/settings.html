@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{settings.css}" rel="stylesheet"/>
+    <link th:href="@{menu-bar.css}" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/settings.js"></script>
+    <title>Instruction</title>
+</head>
+<body>
+    <div id="menu-bar" th:insert="menu-bar.html :: bar"></div>
+    <div id="content">
+        <h3 id="pageName">Calculator settings</h3>
+        <div id="settingsFields">
+            <div class="row">
+                <label class="description" for="backgroundColor">Color mode:</label>
+                <input id="backgroundColor" type="color" onchange="setBackgroundColor()">
+            </div>
+            <div class="row">
+                <label class="description" for="displayColor">Display color:</label>
+                <input id="displayColor" type="color" onchange="setBackgroundColor()">
+            </div>
+            <div class="row">
+                <label class="description" for="textColor">Text color:</label>
+                <input id="textColor" type="color" onchange="setBackgroundColor()">
+            </div>
+            <div class="row">
+                <label class="description" for="btnColor">Buttons color:</label>
+                <input id="btnColor" type="color" onchange="setBackgroundColor()">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

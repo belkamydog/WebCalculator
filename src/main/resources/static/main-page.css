@@ -1,0 +1,24 @@
+#main{
+    display: grid;
+}
+#logo{
+    justify-self: center;
+    align-self: center;
+}
+a{
+    display:grid;
+    text-decoration: none;
+    color: black;
+}
+.menu-point{
+    justify-self: center;
+    align-self: center;
+    border: 2px solid black;
+    width: 400px;
+    text-align: center;
+    margin-top: 10px;
+    background-color: #80808064;
+}
+.menu-point:hover{
+    background-color: white;
+}

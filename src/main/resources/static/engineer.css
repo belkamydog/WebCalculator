@@ -1,0 +1,107 @@
+#content{
+    display: grid;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#calc-base{
+    display:grid;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    background: rgba(219, 238, 255, 0.53);
+}
+
+#calc {
+    margin-bottom:3px;
+    display: inline-flex;
+    white-space: nowrap;
+    flex-direction: column;
+/*    width: 723px;*/
+    width:830px;
+}
+.buttons {
+    border: 1px solid black;
+    border-radius:5px;
+    margin-bottom: 3px;
+    height: 40px;
+    width: 100px;
+    font-size:18px;
+    font-weight: bold;
+}
+
+.buttons:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.buttons:hover {
+    background: #ccddff;
+}
+
+#rad{
+    background: #ccddff;
+}
+
+#ac {
+    background-color: orange;
+}
+
+#display {
+    border: 2px solid black;
+    border-radius:5px;
+    margin-bottom: 3px;
+    text-align:right;
+    background-color:lightgray;
+}
+#fieldDiv {
+    display: block;
+    height: 50px;
+    width: 820px;
+    margin: 5px;
+}
+
+#field{
+    margin-right: 3px;
+    font-size: 30px;
+    width: 99%;
+    background: lightgray;
+    height: 50px;
+    border: none;
+    text-align: right;
+}
+
+#field:focus{
+    outline: none;
+}
+
+/*State bar configuration*/
+
+#state_bar{
+    display: flex;
+    justify-content:flex-start;
+}
+.state{
+    margin-left: 20px;
+    margin-top: 2px;
+    font-weight: bold;
+}
+#memory{
+}
+#xVal{
+    margin-left: 5px;
+}
+/*Chart*/
+canvas{
+    display: none;
+}
+h3{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    color: #5a5a60;
+}
+#status{
+    color: rgb(248, 5, 5);
+}
