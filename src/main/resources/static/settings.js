@@ -1,14 +1,8 @@
 function setBackgroundColor(){
     let bgColor = document.getElementById('backgroundColor').value;
-    let dColor = document.getElementById('displayColor').value;
-    let tColor = document.getElementById('textColor').value;
-    let btnColor = document.getElementById('btnColor').value;
     document.getElementsByTagName('body').item(0).style.backgroundColor = bgColor;
     let data ={
-        backgroundColor: bgColor,
-        displayColor: dColor,
-        textColor: tColor,
-        btnColor: btnColor
+        backgroundColor: bgColor
     }
     $.ajax({
         url: '/settings/save',

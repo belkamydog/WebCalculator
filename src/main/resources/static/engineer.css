@@ -55,6 +55,25 @@
     text-align:right;
     background-color:lightgray;
 }
+
+#history{
+    overflow-y: scroll;
+    max-height: 40px;
+    margin-right: 5px;
+    padding-right: 5px;
+    color: #3b3b3e;
+}
+
+#history::-webkit-scrollbar{
+    width: 7px;
+}
+#history::-webkit-scrollbar-track{
+    opacity: 0;
+}
+#history::-webkit-scrollbar-thumb{
+    background-color: #b3b1b1;
+}
+
 #fieldDiv {
     display: block;
     height: 50px;
