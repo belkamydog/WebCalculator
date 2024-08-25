@@ -12,11 +12,42 @@
 <body>
     <div id="menu-bar" th:insert="menu-bar.html :: bar"></div>
     <div id="content">
-        <h3 id="pageName">Calculator settings</h3>
+        <h1 id="pageName">Calculator settings</h1>
         <div id="settingsFields">
             <div class="row">
                 <label class="description" for="backgroundColor">Color mode:</label>
-                <input id="backgroundColor" type="color" onchange="setBackgroundColor()">
+                <input id="backgroundColor" value="white" type="color" onchange="setBackgroundColor()">
+            </div>
+            <div class="row">
+                <label class="description" for="logsRotation">Logs rotation:</label>
+                <select id="logsRotation" onchange="setRotation()">
+                    <option>hour</option>
+                    <option>day</option>
+                    <option>month</option>
+                </select>
+            </div>
+        </div>
+        <div class="stl_ stl_02">
+            <div class="stl_view">
+                <div class="stl_05 stl_06">
+                    <h1>Справка</h1>
+                    <h2>Вступление</h2>
+                    <div>Зачем же изобретать велосипед скажете вы? Есть огромное количество уже готовых решений подобного рода, и</div>
+                    <div>идея создания не нова. Но многие из них обладают недостатками с моей (субьективной точки зрения). Большая </div>
+                    <div>часть лишена эргономики, необходимых функций, то что есть в одном проекте не хватает в другом. Целью</div>
+                    <div>проекта было разработать наиболее удобный с моей точки зрения калькулятор.</div>
+                    <h2>Возможности</h2>
+                    <div>• Сочетание всех базовых функций (тригонометрических, корень квадратный, логарифмы, возведение в</div>
+                    <div>степень)</div>
+                    <div>• Ввод данных как с механической клавиатуры, так и спомощью встроенной клавиатуры</div>
+                    <div>• Возможность вставлять и копировать выражения в поле ввода</div>
+                    <div>• Адаптивный дизайн (светлая/темная) тема</div>
+                    <div>• Сочетание финансовых калькуляторов</div>
+                    <div>• Возможность добавлять новые функции по мере необходимости (конвертация итд.)</div>
+                    <div>• Построение графиков функций с мастабированием и заданием необходимых параметров.</div>
+                    <div>• Мультиплатформенность</div>
+                    <div>• История. Возможность сохранения своих расчетов</div>
+                </div>
             </div>
         </div>
     </div>

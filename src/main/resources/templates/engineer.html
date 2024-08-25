@@ -59,7 +59,7 @@
                                 <button class="buttons" id="5" type="button" onclick="pushBtn('5')">5</button>
                                 <button class="buttons" id="4" type="button" onclick="pushBtn('4')">4</button>
                                 <button class="buttons" id="/" type="button" onclick="pushBtn('/')">÷</button>
-                                <button class="buttons" id="m-" type="button" onclick="memoryClear()">M-</button>
+                                <button class="buttons" id="m-" type="button" onclick="memoryClear()">MC</button>
                             </div>
                             <div class="results" id="4-line">
                                 <button class="buttons" id="sqrt" type="button" onclick="pushBtn('sqrt(')">√</button>
@@ -69,12 +69,12 @@
                                 <button class="buttons" id="2" type="button" onclick="pushBtn('2')">2</button>
                                 <button class="buttons" id="3" type="button" onclick="pushBtn('3')">3</button>
                                 <button class="buttons" id="-" type="button" onclick="pushBtn('-')">-</button>
-                                <button class="buttons" id="mr" type="button" onclick="getExpression()">MR</button>
+                                <button class="buttons" id="mr" type="button" onclick="memoryR()">MR</button>
                             </div>
                             <div class="results" id="5-line">
                                 <button class="buttons" id="xn" type="button" onclick="pushBtn('^')">x<sup>n</sup></button>
                                 <button class="buttons" id="mod" type="button" onclick="pushBtn('mod')">mod</button>
-                                <button class="buttons" id="createChart" type="button" onclick="sendChartDataToBack()">chart</button>
+                                <button class="buttons" id="createChart" type="button" onclick="openChartSettings()">chart</button>
                                 <button class="buttons" id="dot" type="button" onclick="pushBtn('.')">.</button>
                                 <button class="buttons" id="0" type="button" onclick="pushBtn('0')">0</button>
                                 <button class="buttons" id="=" type="button" onclick="sendDataToBack('/engineer')">=</button>
@@ -84,9 +84,32 @@
                         </div>
                     </div>
                 <div id="chart">
-                        <canvas id="myChart"></canvas>
+                        <canvas id="myChart" width="830" height="400"></canvas>
+                        <div id="chartSettings">
+                            <div class="setColumn">
+                                <label class="descChartSet">xMin <input class="chartInputSet" id="xDefMin" type="number" value="-5"></label>
+                                <label class="descChartSet">xMax <input class="chartInputSet" id="xDefMax" type="number" value="5"></label>
+                            </div>
+                            <div class="setColumn">
+                                <label class="descChartSet">f(x)_Min <input class="chartInputSet" id="fDefMin" type="number" value="-5"></label>
+                                <label class="descChartSet">f(x)_Max <input class="chartInputSet" id="fDefMax" type="number" value="5"></label>
+                            </div>
+                            <div class="setColumn" id="chartBtnColumn">
+                                <button  class="buttons" id="point" onclick="sendChartDataToBack()">Draw</button>
+                                <button class="buttons" id="clearChart" onclick="removeChart()">Clear</button>
+                            </div>
+                        </div>
                         <script src="/funcChart.js" type="text/javascript"></script>
                 </div>
+                <dialog id="dialogHistory">
+                    <div id="controlHistory">
+                        <h3>Operations history</h3>
+                        <button class="buttons" onclick="deleteAllHistory()">clear all</button>
+                        <button class="buttons" onclick="closeDialog()">close</button>
+                    </div>
+                    <div id="dialogData">
+                    </div>
+                </dialog>
             </div>
         </div>
     </body>

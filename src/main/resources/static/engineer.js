@@ -1,10 +1,17 @@
+let memory = 0;
+
 function memoryAdd() {
-    saveExpression();
     document.getElementById("memory").textContent = 'M';
+    memory = document.getElementById("field").value;
 }
 
 function memoryClear() {
     document.getElementById("memory").textContent = '';
+    memory = "";
+}
+
+function memoryR(){
+    document.getElementById("field").value = memory;
 }
 
 function deleteSymbol() {
@@ -46,6 +53,7 @@ function resetBtn() {
 }
 
 function sendDataToBack() {
+    saveExpression();
     const body = {
         inputData: document.getElementById("field").value,
         mode: document.getElementById('mode').textContent,
@@ -121,13 +129,73 @@ function saveExpression() {
     });
 }
 
-function getExpression() {
+function getHistoryExpressions() {
     $.ajax({
         url: '/engineer/show',
         method: 'get',
         dataType: 'html',
         success: function (data) {
-            console.log(data)
+            console.log(data);
+            const obj = JSON.parse(data);
+            createDialog(obj);
+            document.getElementById("dialogHistory").showModal();
+
+        }
+    });
+}
+
+function closeDialog(){
+    document.getElementById("dialogHistory").close();
+}
+
+function createDialog(data){
+    let parentDialog = document.getElementById("dialogData");
+    parentDialog.innerHTML = "";
+    let table = document.createElement("table");
+    for (let i = 0; i < data.length; i++){
+        let tr = document.createElement("tr");
+        let del = document.createElement("td");
+        let delBtn = document.createElement("button");
+        delBtn.id = "delTokenHistoryBtn";
+        delBtn.innerText = "x";
+        delBtn.addEventListener("click", function (){
+            deleteHistoryToken(data[i].id);
+        })
+        del.appendChild(delBtn);
+        let expression = document.createElement("td");
+        expression.className = "historyTokenExpression";
+        expression.innerHTML = data[i].expression;
+        let help = document.createElement("span");
+        expression.appendChild(help);
+        tr.appendChild(del);
+        tr.appendChild(expression);
+        table.appendChild(tr);
+    }
+    parentDialog.appendChild(table)
+}
+
+function deleteAllHistory(){
+    $.ajax({
+        url: '/calculate/engineer/delete-all-history',
+        method: 'post',
+        dataType: 'text',
+        success: function () {
+            closeDialog();
+            getHistoryExpressions();
+        }
+    });
+}
+
+function deleteHistoryToken(tokenId){
+    let data = {"tokenId": tokenId};
+    $.ajax({
+        url: '/calculate/engineer/delete-history-token',
+        method: 'post',
+        data: data,
+        dataType: 'text',
+        success: function () {
+            closeDialog();
+            getHistoryExpressions();
         }
     });
 }
@@ -135,8 +203,29 @@ function getExpression() {
 if (document) {
     document.addEventListener('keydown', function (e) {
         if (e.code === 'Enter') sendDataToBack();
-        else document.getElementById('field').focus();
+        else {
+            if (document.getElementById("chartSettings").style.display === 'none'){
+                document.getElementById('field').focus();
+            }
+        }
+    });
+    document.addEventListener('click', function (event){
+        const div = document.querySelector("#dialogData")
+        const modal = event.composedPath().includes(div);
+        const control = event.composedPath().includes(document.querySelector("#controlHistory"))
+        if (!modal && !control){
+            closeDialog();
+        }
+    });
+    document.addEventListener("click", function (event){
+        if (event.target.className === "historyTokenExpression"){
+            let element = event.target;
+            navigator.clipboard.writeText(
+                element.innerText
+            ).then(r => "");
+        }
     });
 }
+
 
 

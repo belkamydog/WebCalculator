@@ -1,23 +1,22 @@
 package application.controller.rest;
 
 import Chart.Chart;
+import application.model.Chart.ChartModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ChartRestController {
-    private String infixExpression;
+    private ChartModel chart;
 
     @PostMapping("/chart")
-    public void getChartExpression(@RequestParam("infixExpression") String infixExpression) {
-        this.infixExpression = infixExpression;
+    public void getChartExpression(ChartModel chartModel) {
+        this.chart= chartModel;
     }
 
     @GetMapping("/chart")
     public Chart getChart() {
-        Chart chart = new Chart(-10000, 10000, infixExpression, 0.5);
         try {
             chart.calculateChart();
         } catch (Exception ex) {

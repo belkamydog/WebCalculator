@@ -4,6 +4,7 @@ import application.model.Engineer.EngineerModel;
 import application.model.Expression.Expression;
 import application.model.SaveLogs.SaveLogs;
 import application.repository.ExpressionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,8 @@ import java.io.IOException;
 public class EngineerRestController {
     private EngineerModel engineerModel;
     private final ExpressionRepository expressionRepository;
+    @Autowired
+    private SaveLogs saveLogs;
 
     public EngineerRestController(ExpressionRepository expressionRepository) {
         this.expressionRepository = expressionRepository;
@@ -25,13 +28,23 @@ public class EngineerRestController {
         return engineerModel;
     }
 
+    @PostMapping("/calculate/engineer/delete-all-history")
+    public void deleteAllHistory() {
+        expressionRepository.deleteAll();
+    }
+
+    @PostMapping("/calculate/engineer/delete-history-token")
+    public void deleteHistoryToken(@RequestParam("tokenId") long id) {
+        expressionRepository.deleteById(id);
+    }
+
     @PostMapping("/engineer")
     public void getExpression(EngineerModel engineerModel) throws IOException {
         try {
             this.engineerModel = engineerModel;
-            SaveLogs saveLogs = new SaveLogs(SaveLogs.Status.INFO, engineerModel.getInfixExpression() + " " + engineerModel.getResult() + " " + engineerModel.isStatus());
+            saveLogs.writeLog(SaveLogs.Status.INFO, engineerModel.getInfixExpression() + " " + engineerModel.getResult() + " " + engineerModel.isStatus());
         } catch (Exception ex) {
-            SaveLogs saveLogs = new SaveLogs(SaveLogs.Status.CRITICAL, engineerModel.getInfixExpression() + " " + engineerModel.getResult() + " " + engineerModel.isStatus());
+            saveLogs.writeLog(SaveLogs.Status.CRITICAL, engineerModel.getInfixExpression() + " " + engineerModel.getResult() + " " + engineerModel.isStatus());
             System.err.println(ex.getMessage());
         }
     }
@@ -49,7 +62,6 @@ public class EngineerRestController {
 
     @GetMapping("/engineer/show")
     public Iterable<Expression> showExpression() throws IOException {
-        Iterable <Expression> expressionList = expressionRepository.findAll();
-        return expressionList;
+        return expressionRepository.findAll();
     }
 }

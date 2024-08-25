@@ -31,3 +31,19 @@ function getSettings(){
         }
     });
 }
+
+function setRotation(){
+    let data ={
+        rotation: document.getElementById("logsRotation").value
+    }
+    $.ajax({
+        url: '/settings/rotation',
+        method: 'post',
+        dataType: 'html',
+        data: data,
+        async: false,
+        success: function(data){
+            console.log("success set rotation");
+        }
+    });
+}

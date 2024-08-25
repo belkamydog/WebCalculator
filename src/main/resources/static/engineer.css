@@ -111,10 +111,7 @@
 #xVal{
     margin-left: 5px;
 }
-/*Chart*/
-canvas{
-    display: none;
-}
+
 h3{
     margin-top: 20px;
     margin-left: 20px;
@@ -123,4 +120,102 @@ h3{
 }
 #status{
     color: rgb(248, 5, 5);
+}
+
+#dialogHistory{
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 300px;
+    max-height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+#delTokenHistoryBtn{
+    color: white;
+    font-weight: bold;
+    background-color: red !important;
+    border-radius: 10px;
+    border: none;
+}
+#delTokenHistoryBtn:hover{
+    scale: 120%;
+}
+
+#delTokenHistoryBtn:active{
+    color: #860011;
+    scale: 80%;
+}
+
+
+td{
+    font-size: 20px;
+    background: #e8edff;
+    border-bottom: 1px solid white;
+    color: #3b3b3e;
+    border-top: 1px solid transparent;
+    padding: 8px;
+}
+
+.historyTokenExpression:hover{
+    scale: 120%;
+    background-color: #aabcfe;
+}
+
+.historyTokenExpression:hover:before{
+    font-size: 15px;
+    position: absolute;
+    width: 100px;
+    color: #fff;
+    background: #000;
+    padding: 5px;
+    border-radius: 4px;
+    bottom: 25px;
+    left: 50px;
+}
+
+.historyTokenExpression:hover:before{
+    content: "click to copy";
+}
+
+/*Chart*/
+#chart{
+    display: grid;
+}
+#chartSettings{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+    padding-right: 1px;
+    margin-top: 5px;
+    display: none;
+}
+
+.descChartSet{
+   margin-left: 8px;
+    font-weight: bold;
+}
+
+.chartInputSet{
+    background-color: lightgray;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 5px;
+    width: 73px;
+    height: 37px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+#chartBtnColumn{
+    margin-left: 16px;
+}
+canvas{
+    background-color: lightgray;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-top: 20px;
+    padding-right: 2px;
+    display: none;
 }
